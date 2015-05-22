@@ -17,4 +17,35 @@
     <script src="app.js"></script>
 </head>
 
+<div class="container" ng-app="timeApp" ng-controller="mainController as main">
+	
+	<pre>
+		<p>The time is {{ main.time }}</p>
+	</pre>
+	
+	<pre>
+		<!-- built-in ngMoment directive -->
+		<time am-time-ago="main.time"></time>
+	</pre>
+	
+	<pre>
+		<!-- example of using a filter on the time format -->
+		<time>{{ main.time | amDateFormat: 'dddd, MMMM Do YYYY, h:mm a' }}</time>
+	</pre>
+	
+	<pre>
+		<!-- example showing a calendar date in relative format (like Facebook) -->
+		<time>{{ main.time | amCalendar }}</time>
+	</pre>
+	
+	<!---------------------------------------------------------------------------------->
+	<!-- best practice is to add a title to the relative date/time                    -->
+	<!-- user will see "Posted 1m ago!" and they can hover over to see the exact time -->
+	<!---------------------------------------------------------------------------------->
+	<pre>
+		<time title="{{ main.time | amDateFormat: 'dddd, MMMM, Do YYYY, h:mm a' }}">{{ main.time | amCalendar }}</time>
+	</pre>
+	
+</div>
+
 </html>
